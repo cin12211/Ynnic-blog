@@ -1,13 +1,16 @@
 /* Defaults */
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+		Courier, monospace;
 }
 
 /* Theme colors */
 :root {
 	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
+	--color-gray-50: #c0c0c0;
 	--color-gray-90: #333;
 
 	--background-color: #fff;
@@ -15,7 +18,7 @@
 	--text-color: var(--color-gray-90);
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
+	--text-color-link-visited: #17050f;
 
 	--syntax-tab-size: 2;
 }
@@ -23,7 +26,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
+		--color-gray-50: #c0c0c0;
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
@@ -34,7 +37,6 @@
 		--background-color: #15202b;
 	}
 }
-
 
 /* Global stylesheet */
 * {
@@ -72,16 +74,16 @@ body {
 }
 
 /* Fluid images via https://www.zachleat.com/web/fluid-images/ */
-img{
-  max-width: 100%;
+img {
+	max-width: 100%;
 }
 img[width][height] {
-  height: auto;
+	height: auto;
 }
 img[src$=".svg"] {
-  width: 100%;
-  height: auto;
-  max-width: none;
+	width: 100%;
+	height: auto;
+	max-width: none;
 }
 video,
 iframe {
@@ -147,7 +149,7 @@ header {
 .links-nextprev {
 	display: flex;
 	justify-content: space-between;
-	gap: .5em 1em;
+	gap: 0.5em 1em;
 	list-style: "";
 	border-top: 1px dashed var(--color-gray-20);
 	padding: 1em 0;
@@ -172,7 +174,7 @@ code {
 	font-family: var(--font-family-monospace);
 }
 pre:not([class*="language-"]) {
-	margin: .5em 0;
+	margin: 0.5em 0;
 	line-height: 1.375; /* 22px /16 */
 	-moz-tab-size: var(--syntax-tab-size);
 	-o-tab-size: var(--syntax-tab-size);
@@ -212,7 +214,7 @@ header {
 /* Nav */
 .nav {
 	display: flex;
-	gap: .5em 1em;
+	gap: 0.5em 1em;
 	padding: 0;
 	margin: 0;
 	list-style: none;
@@ -261,8 +263,8 @@ header {
 	font-size: 1.1875em; /* 19px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
-	padding-right: .5em;
+	padding-left: 0.25em;
+	padding-right: 0.5em;
 	text-underline-position: from-font;
 	text-underline-offset: 0;
 	text-decoration-thickness: 1px;
@@ -287,7 +289,7 @@ header {
 .post-metadata {
 	display: inline-flex;
 	flex-wrap: wrap;
-	gap: .5em;
+	gap: 0.5em;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -296,3 +298,8 @@ header {
 	margin-right: 1em;
 }
 
+.chibi-fixed {
+	position: fixed;
+	bottom: 0em;
+	right: 0.2em;
+}
