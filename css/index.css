@@ -7,9 +7,9 @@
 
 /* Defaults */
 :root {
-	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
+	--font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
 	--font-family-monospace: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
 		Consolas, "Courier New", monospace;
 }
@@ -79,7 +79,8 @@ html {
 	line-height: 1.6;
 }
 body {
-	max-width: 60em; /* ~960px for better readability */
+	/* max-width: 80em; ~960px for better readability */
+	margin: 0 10vw;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -144,9 +145,13 @@ footer {
 main :first-child {
 	margin-top: 0;
 }
+main {
+	max-width: 60em;
+	margin: 0 auto;
+}
 
 header {
-	border-bottom: 1px solid var(--border-color);
+	/* border-bottom: 1px solid var(--border-color); */
 	background-color: var(--background-color);
 }
 
@@ -222,13 +227,13 @@ header {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1.2em 1.5em;
+	padding: 1em 1.5em;
 }
 .home-link {
 	flex-grow: 1;
-	font-size: 1.25em;
+	font-size: 1.5rem;
 	font-weight: 700;
-	color: var(--text-color);
+	color: var(--text-color) !important;
 	text-decoration: none;
 	letter-spacing: -0.02em;
 }
@@ -252,8 +257,9 @@ header {
 	display: inline-block;
 }
 .nav-item a[href] {
+	font-size: 14px;
 	text-decoration: none;
-	color: var(--text-color);
+	color: var(--text-color-light);
 	font-weight: 500;
 	transition: color 0.2s ease;
 	padding: 0.25em 0;
@@ -338,7 +344,7 @@ header {
 .chibi-fixed {
 	position: fixed;
 	bottom: 0em;
-	right: 0.2em;
+	right: 0em;
 }
 
 /* Uber-inspired Typography Enhancements */
