@@ -1,41 +1,59 @@
-/* Defaults */
-:root {
-	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
-		Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
-		Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
-		Courier, monospace;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+	themes: all;
 }
 
-/* Theme colors */
+/* Defaults */
 :root {
-	--color-gray-20: #e0e0e0;
-	--color-gray-50: #c0c0c0;
-	--color-gray-90: #333;
+	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	--font-family-monospace: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+		Consolas, "Courier New", monospace;
+}
 
-	--background-color: #fff;
+/* Theme colors - Uber-inspired clean aesthetic */
+:root {
+	--color-gray-10: #f6f6f6;
+	--color-gray-20: #e5e5e5;
+	--color-gray-50: #767676;
+	--color-gray-90: #333333;
+	--color-black: #000000;
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050f;
+	--background-color: #ffffff;
+	--background-secondary: #f6f6f6;
+
+	--text-color: var(--color-black);
+	--text-color-light: var(--color-gray-50);
+	--text-color-link: #1a73e8;
+	--text-color-link-active: #1557b0;
+	--text-color-link-visited: #1a73e8;
+
+	--border-color: var(--color-gray-20);
 
 	--syntax-tab-size: 2;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #c0c0c0;
-		--color-gray-90: #dad8d8;
+/* Dark theme when manually toggled or system prefers dark */
+html[data-theme="dark"] {
+	--color-gray-10: #1a1a1a;
+	--color-gray-20: #2a2a2a;
+	--color-gray-50: #999999;
+	--color-gray-90: #e0e0e0;
+	--color-black: #ffffff;
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+	--background-color: #0d0d0d;
+	--background-secondary: #1a1a1a;
 
-		--background-color: #15202b;
-	}
+	--text-color: var(--color-gray-90);
+	--text-color-light: var(--color-gray-50);
+	--text-color-link: #4d9fff;
+	--text-color-link-active: #80b3ff;
+	--text-color-link-visited: #4d9fff;
+
+	--border-color: var(--color-gray-20);
 }
 
 /* Global stylesheet */
@@ -57,9 +75,11 @@ body {
 }
 html {
 	overflow-y: scroll;
+	font-size: 16px;
+	line-height: 1.6;
 }
 body {
-	max-width: 40em;
+	max-width: 60em; /* ~960px for better readability */
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -98,11 +118,12 @@ p:last-child {
 	margin-bottom: 0;
 }
 p {
-	line-height: 1.5;
+	line-height: 1.7;
+	margin: 1.2em 0;
 }
 
 li {
-	line-height: 1.5;
+	line-height: 1.7;
 }
 
 a[href] {
@@ -118,14 +139,15 @@ a[href]:active {
 
 main,
 footer {
-	padding: 1rem;
+	padding: 2rem 1.5rem;
 }
 main :first-child {
 	margin-top: 0;
 }
 
 header {
-	border-bottom: 1px dashed var(--color-gray-20);
+	border-bottom: 1px solid var(--border-color);
+	background-color: var(--background-color);
 }
 
 #skip-link {
@@ -196,37 +218,52 @@ code {
 /* Header */
 header {
 	display: flex;
-	gap: 1em;
+	gap: 1.5em;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1em;
+	padding: 1.2em 1.5em;
 }
 .home-link {
 	flex-grow: 1;
-	font-size: 1em; /* 16px /16 */
+	font-size: 1.25em;
 	font-weight: 700;
+	color: var(--text-color);
+	text-decoration: none;
+	letter-spacing: -0.02em;
 }
 .home-link:link:not(:hover) {
 	text-decoration: none;
+}
+.home-link:hover {
+	color: var(--text-color-link);
 }
 
 /* Nav */
 .nav {
 	display: flex;
-	gap: 0.5em 1em;
+	gap: 0.5em 1.5em;
 	padding: 0;
 	margin: 0;
 	list-style: none;
+	align-items: center;
 }
 .nav-item {
 	display: inline-block;
 }
-.nav-item a[href]:not(:hover) {
+.nav-item a[href] {
 	text-decoration: none;
+	color: var(--text-color);
+	font-weight: 500;
+	transition: color 0.2s ease;
+	padding: 0.25em 0;
+}
+.nav-item a[href]:hover {
+	color: var(--text-color-link);
 }
 .nav a[href][aria-current="page"] {
-	text-decoration: underline;
+	color: var(--text-color-link);
+	border-bottom: 2px solid var(--text-color-link);
 }
 
 /* Posts list */
@@ -302,4 +339,132 @@ header {
 	position: fixed;
 	bottom: 0em;
 	right: 0.2em;
+}
+
+/* Uber-inspired Typography Enhancements */
+
+/* Main article title styling */
+h1 {
+	font-size: 2.5em;
+	font-weight: 700;
+	line-height: 1.2;
+	/* margin-top: 0.5em; */
+	margin-bottom: 0.25em;
+	letter-spacing: -0.02em;
+	color: var(--text-color);
+}
+
+/* Headings hierarchy */
+h2 {
+	font-size: 1.8em;
+	font-weight: 700;
+	line-height: 1.3;
+	margin-top: 1.5em;
+	margin-bottom: 0.75em;
+	letter-spacing: -0.01em;
+	color: var(--text-color);
+}
+
+h3 {
+	font-size: 1.4em;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+	color: var(--text-color);
+}
+
+h4 {
+	font-size: 1.2em;
+	font-weight: 600;
+	line-height: 1.4;
+	margin-top: 1.25em;
+	margin-bottom: 0.5em;
+	color: var(--text-color);
+}
+
+h5,
+h6 {
+	font-size: 1em;
+	font-weight: 600;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	color: var(--text-color);
+}
+
+/* Post metadata enhancements */
+.post-metadata time {
+	color: var(--text-color-light);
+	font-weight: 500;
+}
+
+/* Tag enhancements */
+.post-tag {
+	color: var(--text-color-light);
+	font-style: normal;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.post-tag:hover {
+	color: var(--text-color-link);
+}
+
+/* Footer styling */
+footer {
+	border-top: 1px solid var(--border-color);
+	color: var(--text-color-light);
+	font-size: 0.9em;
+	margin-top: 3em;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0.32em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-color);
+	transition: color 0.2s ease, transform 0.2s ease;
+	border-radius: 4px;
+}
+
+.theme-toggle:hover {
+	color: var(--text-color-link);
+	background-color: var(--background-secondary);
+	transform: scale(1.1);
+}
+
+.theme-toggle:active {
+	transform: scale(0.95);
+}
+
+/* Show sun icon in dark mode, moon icon in light mode */
+html[data-theme="light"] .theme-toggle .sun-icon {
+	display: none;
+}
+
+html[data-theme="light"] .theme-toggle .moon-icon {
+	display: block;
+}
+
+html[data-theme="dark"] .theme-toggle .sun-icon {
+	display: block;
+}
+
+html[data-theme="dark"] .theme-toggle .moon-icon {
+	display: none;
+}
+
+.theme-toggle i {
+	width: 20px;
+	height: 20px;
+	transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+	transform: rotate(20deg);
 }

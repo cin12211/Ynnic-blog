@@ -3,8 +3,10 @@ title: This is my six post.
 description: This is a post on My Blog about agile frameworks.
 date: 2025-05-01
 tags: ["tag one", "tag two"]
+topic: Typescript
 ---
-Hello i'am Ynnic 
+
+Hello i'am Ynnic
 
 ## Section Header
 
