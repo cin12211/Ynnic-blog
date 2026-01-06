@@ -73,13 +73,28 @@
             {{ content | safe }}
         </heading-anchors>
     </main>
-    <footer>
-        <p>
-            <em>Built with
-                <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a>
-            </em>
-        </p>
+
+    
+    <footer class="footer footer-horizontal footer-center text-base-content rounded p-10  gap-5 mb-5">
+        <nav class="mt-5">
+            <div class="grid grid-flow-col gap-4">
+                <a> 
+                    {% lucide "github" %}
+                </a>
+                <a>
+                {% lucide "linkedin" %}
+                </a>
+                <a>
+                {% lucide "facebook" %}
+                </a>
+            </div>
+        </nav>
+        <aside>
+            <p class="mt-0!">Copyright © 2026 - All right reserved by Ynnic</p>
+        </aside>
     </footer>
+
+
     <!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
     <script type="module" src="{% getBundleFileUrl "js" %}"></script>
     <script>

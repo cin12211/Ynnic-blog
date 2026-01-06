@@ -146,7 +146,7 @@ main :first-child {
 	margin-top: 0;
 }
 main {
-	max-width: 60em;
+	max-width: 50vw;
 	margin: 0 auto;
 }
 
@@ -301,9 +301,10 @@ header {
 }
 .postlist-date {
 	word-spacing: -0.5px;
+	color: var(--text-color-light);
 }
 .postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
+	font-size: 1.25rem; /* 20px /16 */
 	font-weight: 700;
 	flex-basis: calc(100% - 1.5rem);
 	padding-left: 0.25em;
@@ -311,6 +312,8 @@ header {
 	text-underline-position: from-font;
 	text-underline-offset: 0;
 	text-decoration-thickness: 1px;
+	text-decoration: none;
+	color: var(--text-color) !important;
 }
 .postlist-item-active .postlist-link {
 	font-weight: bold;
