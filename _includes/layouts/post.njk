@@ -8,7 +8,7 @@ layout: layouts/base.njk
 {%- if topic %}
     <span class='text-xs font-[500] text-gray-50 mb-0'>{{ topic }}</span>
 {%- endif %}
-<h1 class='mt-0!'>{{ title }}</h1>
+<h1 class='mt-0! mb-0.5!'>{{ title }}</h1>
 <ul class="post-metadata items-center">
     <li>
         <time class='text-xs' datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate('dd MMM yyyy') }}</time>
