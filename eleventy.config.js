@@ -17,6 +17,7 @@ import postcss from "postcss";
 import tailwindcss from "@tailwindcss/postcss";
 
 import pluginFilters from "./_config/filters.js";
+import pluginToc from "./_config/toc.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function (eleventyConfig) {
@@ -172,6 +173,12 @@ export default async function (eleventyConfig) {
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
+
+	// TOC Plugin
+	eleventyConfig.addPlugin(pluginToc, {
+		levels: [2, 3, 4],
+		title: "On this page",
+	});
 
 	eleventyConfig.addPlugin(IdAttributePlugin, {
 		// by default we use Eleventy’s built-in `slugify` filter:
