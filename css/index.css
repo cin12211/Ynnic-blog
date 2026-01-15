@@ -515,3 +515,81 @@ html[data-theme="dark"] .theme-toggle .moon-icon {
 .back-to-top:active {
 	transform: translateY(0);
 }
+
+/* Shiki Dual Theme Support */
+code[class*="language-"] {
+	text-shadow: none;
+}
+pre.shiki {
+	padding: 1rem 1.25rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	margin: 1.5em 0;
+	font-size: 0.875rem;
+	line-height: 1.7;
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+}
+
+/* Light theme (default) */
+html[data-theme="light"] pre.shiki,
+html:not([data-theme]) pre.shiki {
+	background-color: var(--shiki-light-bg, #f6f8fa) !important;
+}
+
+html[data-theme="light"] pre.shiki span,
+html:not([data-theme]) pre.shiki span {
+	color: var(--shiki-light) !important;
+}
+
+/* Dark theme */
+html[data-theme="dark"] pre.shiki {
+	background-color: var(--shiki-dark-bg, #24292e) !important;
+}
+
+html[data-theme="dark"] pre.shiki span {
+	color: var(--shiki-dark) !important;
+}
+
+/* Inline code styling */
+:not(pre) > code {
+	background-color: var(--background-secondary);
+	padding: 0.2em 0.4em;
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+
+/* Shiki Diff Notation Styling */
+pre.shiki .diff.add {
+	background-color: rgba(46, 160, 67, 0.2);
+}
+
+pre.shiki .diff.remove {
+	background-color: rgba(248, 81, 73, 0.2);
+}
+
+pre.shiki .diff.add::before {
+	content: "+";
+	color: #3fb950;
+	position: absolute;
+	left: 0.5rem;
+}
+
+pre.shiki .diff.remove::before {
+	content: "-";
+	color: #f85149;
+	position: absolute;
+	left: 0.5rem;
+}
+
+pre.shiki .line.diff {
+	position: relative;
+	padding-left: 1.5rem;
+	display: inline-block;
+	width: 100%;
+	margin: 0 -1.25rem;
+	padding-right: 1.25rem;
+}
+
+/* end Shiki Dual Theme Support */

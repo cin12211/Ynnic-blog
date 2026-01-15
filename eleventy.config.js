@@ -4,10 +4,12 @@ import {
 	HtmlBasePlugin,
 } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
-import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import eleventyLucideicons from "@grimlink/eleventy-plugin-lucide-icons";
+import markdownIt from "markdown-it";
+import Shiki from "@shikijs/markdown-it";
+import { transformerNotationDiff } from "@shikijs/transformers";
 
 import fs from "fs";
 import path from "path";
@@ -62,10 +64,60 @@ export default async function (eleventyConfig) {
 		bundleHtmlContentFromSelector: "script",
 	});
 
-	// Official plugins
-	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
-		preAttributes: { tabindex: 0 },
+	// Configure markdown-it with Shiki for syntax highlighting
+	const shikiPlugin = await Shiki({
+		themes: {
+			light: "catppuccin-latte",
+			dark: "catppuccin-macchiato",
+		},
+		defaultColor: false,
+		cssVariablePrefix: "--shiki-",
+		transformers: [
+			transformerNotationDiff({
+				matchAlgorithm: "v3",
+			}),
+		],
+		// Handle diff-* languages by extracting base language
+		langs: [
+			"javascript",
+			"typescript",
+			"json",
+			"html",
+			"css",
+			"markdown",
+			"bash",
+			"shell",
+			"python",
+			"jsx",
+			"tsx",
+			"vue",
+			"yaml",
+			"sql",
+			"diff",
+		],
+		langAlias: {
+			"diff-js": "javascript",
+			"diff-javascript": "javascript",
+			"diff-ts": "typescript",
+			"diff-typescript": "typescript",
+			"diff-json": "json",
+			"diff-html": "html",
+			"diff-css": "css",
+			"diff-bash": "bash",
+			"diff-shell": "shell",
+			"diff-python": "python",
+			"diff-jsx": "jsx",
+			"diff-tsx": "tsx",
+			"diff-vue": "vue",
+			"diff-yaml": "yaml",
+			"diff-sql": "sql",
+		},
 	});
+
+	const md = markdownIt({ html: true });
+	md.use(shikiPlugin);
+
+	eleventyConfig.setLibrary("md", md);
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
